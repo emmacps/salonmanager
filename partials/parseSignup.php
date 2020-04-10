@@ -67,7 +67,7 @@ if(isset($_POST['signupBtn'], $_POST['token'])){
                     <h2>User Authentication: Code A Secured Login System</h2>
                     <p>Dear '.$username.'<br><br>Thank you for registering, please click on the link below to
                         confirm your email address</p>
-                    <p><a href="http://auth.dev/activate.php?id='.$encode_id.'"> Confirm Email</a></p>
+                    <p><a href="http://localhost/auth/activate.php?id='.$encode_id.'"> Confirm Email</a></p>
                     <p><strong>&copy;2016 ICT DesighHUB</strong></p>
                     </body>
                     </html>';

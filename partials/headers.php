@@ -21,6 +21,9 @@ error_reporting(E_ALL);
     <link rel="stylesheet" href="css/sweetalert.css">
     <link href="css/custom.css" rel="stylesheet">
 
+    <script src="js/tiny.js" referrerpolicy="origin"></script>
+ <!-- <script>tinymce.init({selector:'textarea'});</script> -->
+
     <script type="text/javascript" src="js/sweetalert.min.js"></script>
 
 

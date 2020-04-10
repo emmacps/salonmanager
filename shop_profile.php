@@ -17,7 +17,7 @@ include_once 'partials/parseProfile.php';
       <li class="breadcrumb-item">
         <a href="index.html">Home</a>
       </li>
-      <li class="breadcrumb-item active">Portfolio Item</li>
+      <li class="breadcrumb-item active"><?php if(isset($username)) echo $username; ?></li>
     </ol>
 
     <!-- Portfolio Item Row -->
@@ -28,7 +28,7 @@ include_once 'partials/parseProfile.php';
       </div>
 
       <div class="col-md-4">
-        <h3 class="my-3">Project Description</h3>
+        <h3 class="my-3">Salon Description</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
         <h3 class="my-3">Project Details</h3>
         <ul>
@@ -43,7 +43,49 @@ include_once 'partials/parseProfile.php';
     <!-- /.row -->
 
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
+ 
+
+    <div class="row">
+      <div class="col-lg-8 mb-4">
+        <h3>Book an Appointment</h3>
+        <form name="">
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Full Name:</label>
+              <input type="text" class="form-control" name="" required>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Phone Number:</label>
+              <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Email Address:</label>
+              <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Appointment date</label>
+              <input type="time" id="meeting-time" name="meeting-time" class="form-control" required>
+            </div>
+          </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Message:</label>
+              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+            </div>
+          </div>
+          <div id="success"></div>
+          <!-- For success/fail messages -->
+          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+        </form>
+      </div>
+
+    </div>
 
     <div class="row">
 

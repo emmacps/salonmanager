@@ -11,6 +11,7 @@ if(isset($_GET['u'])){
 
     while($rs = $statement->fetch()){
         $shop_name = $rs['shop_name'];
+        $des = $rs['des'];
         $username = $rs['username'];
         $profile_picture = $rs['avatar'];
         $date_joined =  strftime("%b %d, %Y", strtotime($rs["join_date"]));
@@ -34,6 +35,7 @@ else if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_PO
 
     while($rs = $statement->fetch()){
         $shop_name = $rs['shop_name'];
+        $des = $rs['des'];
         $username = $rs['username'];
         $email = $rs['email'];
         $profile_picture = $rs['avatar'];
@@ -51,7 +53,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
             $form_errors = array();
 
             //Form validation
-            $required_fields = array('email', 'username', 'shop_name');
+            $required_fields = array('email', 'username', 'shop_name', 'des');
 
             //call the function to check empty field and merge the return data into form_error array
             $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
@@ -74,12 +76,13 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
 
             //collect form data and store in variables
             $shop_name = $_POST['shop_name'];
+            $des = $_POST['des'];
             $email = $_POST['email'];
             $username = $_POST['username'];
             $hidden_id = $_POST['hidden_id'];
 
             $result = false;
-            $emailExistForAnotherUser = $db->query("SELECT email FROM users 
+            $emailExistForAnotherUser = $db->query("SELECT email FROM users
             WHERE email = '$email' AND id <> '$hidden_id'");
 
             if($emailExistForAnotherUser->fetch()){
@@ -96,7 +99,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
                         $oldAvatar = $rs['avatar'];
                     }
                     //create SQL update statement
-                    $sqlUpdate = "UPDATE users SET shop_name =:shop_name, username =:username, email =:email WHERE id =:id";
+                    $sqlUpdate = "UPDATE users SET des =:des, shop_name =:shop_name, username =:username, email =:email WHERE id =:id";
 
                     //use PDO prepared to sanitize data
                     $statement = $db->prepare($sqlUpdate);
@@ -121,19 +124,19 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
 
                     }else{
                         //update the record in the database
-                        $statement->execute(array(':shop_name' => $shop_name, ':username' => $username, ':email' => $email, ':id' => $hidden_id));
+                        $statement->execute(array(':des' => $des, ':shop_name' => $shop_name, ':username' => $username, ':email' => $email, ':id' => $hidden_id));
                     }
                     //check if one new row was created
                     if($statement->rowCount() == 1){
                         $result = "<script type=\"text/javascript\">
-                swal({title:\"Updated!\", text:\"Profile Update Successfully.\", type:\"success\"}, 
+                swal({title:\"Updated!\", text:\"Profile Update Successfully.\", type:\"success\"},
                     function() {
                         window.location.replace(window.location.href);
                     });
                 </script>";
                     }else{
                         $result = "<script type=\"text/javascript\">
-                swal({title:\"Nothing Happened\", text:\"You have not made any changes.\"}, 
+                swal({title:\"Nothing Happened\", text:\"You have not made any changes.\"},
                 function() {
                     window.location.replace(window.location.href);
                 }
@@ -160,5 +163,5 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
                       ,'error');
                       </script>";
         }
-        
+
 }

@@ -23,6 +23,12 @@ include_once 'partials/parseProfile.php';
                         <input type="text" name="shop_name" class="form-control" id="" value="<?php if(isset($shop_name)) echo $shop_name; ?>">
                     </div>
                     <div class="form-group">
+                        <label for="emailField">Shop Description</label>
+                        <textarea class="form-control" name="des" rows="8" cols="80">
+                          <?php if(isset($des)) echo $des; ?>
+                        </textarea>
+                    </div>
+                    <div class="form-group">
                         <label for="emailField">Email</label>
                         <input type="text" name="email" class="form-control" id="emailField" value="<?php if(isset($email)) echo $email; ?>">
                     </div>

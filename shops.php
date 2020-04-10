@@ -32,11 +32,11 @@ include_once 'partials/parseMembers.php';
           <a href="shop_profile.php?u=<?= $member['username'] ?>"><img class="card-img-top" src="<?= $member['avatar'] ?>" alt="Card image cap"></a>
           <div class="card-body">
             <h2 class="card-title"><?=$member['username']?></h2>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p>
-            <a href="shop_profile.php?u=<?= $member['username'] ?>" class="btn btn-primary">Read More &rarr;</a>
+           <!--  <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam. Dicta expedita corporis animi vero voluptate voluptatibus possimus, veniam magni quis!</p> -->
+            <a href="shop_profile.php?u=<?= $member['username'] ?>" class="btn btn-primary">Visit Salon &rarr;</a>
           </div>
           <div class="card-footer text-muted">
-            Date Registered: <?=$member['join_date']?>
+            Date Registered: <?=$member['join_date'] ?>
           </div>
         </div>
       <?php endforeach; ?>
