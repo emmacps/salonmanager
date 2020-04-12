@@ -58,15 +58,31 @@ include_once 'partials/parseProfile.php';
           <div class="control-group form-group">
             <div class="controls">
               <label>Phone Number:</label>
-              <input type="tel" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+              <input type="text" class="form-control" name="" required="">
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Email Address:</label>
-              <input type="email" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
+              <input type="email" class="form-control" name="" required="">
             </div>
           </div>
+
+          <div class="control-group form-group">
+            <label>Prefered Mode of Contact:  </label>
+            <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="contact" value="phone">
+            <label class="form-check-label">Phone</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="contact" value="email">
+            <label class="form-check-label" for="inlineRadio2">Email</label>
+          </div>
+          </div>
+
+          
+
+
           <div class="control-group form-group">
             <div class="controls">
               <label>Appointment date</label>

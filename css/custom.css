@@ -28,3 +28,7 @@ body {
 .bottompadding{
   padding: 60px 0 307px 0;
 }
+
+.top-padding{
+  padding-top: 60px;
+}

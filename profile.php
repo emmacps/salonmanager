@@ -4,6 +4,49 @@ include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
 ?>
 
+<div class="container top-padding">
+  <div class="row">
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem;">
+          <img src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h4 class="card-title"><?php if(isset($shop_name)) echo $shop_name; ?></h4>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"><b>Username: </b><?php if(isset($username)) echo $username; ?></li>
+            <li class="list-group-item"><b>Email: </b><?php if(isset($email)) echo $email; ?></li>
+            <li class="list-group-item"><b>Date Joined: </b><?php if(isset($date_joined)) echo $date_joined; ?></li>
+          </ul>
+          <div class="card-body">
+            <a href="#" class="btn btn-info mb-2">Edit Profile</a>
+            <a href="#" class="btn btn-warning mb-2">Change Password</a>
+            <a href="#" class="btn btn-danger">Deactivate Account</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
+  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
+  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+</div>
+      </div>
+      </div>
+  </div>
+</div>
+
 <div class="container">
     <div >
         <h1>Profile</h1>
