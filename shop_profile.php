@@ -9,13 +9,13 @@ include_once 'partials/parseProfile.php';
   <div class="container">
 
     <!-- Page Heading/Breadcrumbs -->
-    <h1 class="mt-4 mb-3">Welcome to 
+    <h1 class="mt-4 mb-3">Welcome to
       <small><?php if(isset($shop_name)) echo $shop_name; ?></small>
     </h1>
 
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="index.html">Home</a>
+        <a href="index.php">Home</a>
       </li>
       <li class="breadcrumb-item active"><?php if(isset($username)) echo $username; ?></li>
     </ol>
@@ -29,7 +29,7 @@ include_once 'partials/parseProfile.php';
 
       <div class="col-md-4">
         <h3 class="my-3">Salon Description</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+        <p><?php if(isset($des)) echo $des; ?></p>
         <h3 class="my-3">Project Details</h3>
         <ul>
           <li>Lorem Ipsum</li>
@@ -43,7 +43,7 @@ include_once 'partials/parseProfile.php';
     <!-- /.row -->
 
     <!-- Related Projects Row -->
- 
+
 
     <div class="row">
       <div class="col-lg-8 mb-4">
@@ -67,34 +67,43 @@ include_once 'partials/parseProfile.php';
               <input type="email" class="form-control" name="" required="">
             </div>
           </div>
+          <div class="control-group form-group">
+            <div class="controls">
+              <label>Select Service</label>
+              <select class="form-control" name="">
+                <option value="">Slect your service</option>
+                <option value="">Perming</option>
+                <option value="">Washing</option>
+                <option value="">Raster</option>
+              </select>
+            </div>
+          </div>
 
           <div class="control-group form-group">
-            <label>Prefered Mode of Contact:  </label>
+            <label>Prefered Mode of Service:  </label>
             <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="contact" value="phone">
-            <label class="form-check-label">Phone</label>
+            <label class="form-check-label">Home Service</label>
           </div>
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="contact" value="email">
-            <label class="form-check-label" for="inlineRadio2">Email</label>
+            <label class="form-check-label" for="inlineRadio2">Walk-in Service</label>
           </div>
           </div>
-
-          
-
 
           <div class="control-group form-group">
             <div class="controls">
-              <label>Appointment date</label>
-              <input type="time" id="meeting-time" name="meeting-time" class="form-control" required>
+              <label>Appointment Date</label>
+              <input type="date" name="meeting-time" class="form-control" required>
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
-              <label>Message:</label>
-              <textarea rows="10" cols="100" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+              <label>Appointment Time</label>
+              <input type="time" name="meeting-time" class="form-control" required>
             </div>
           </div>
+
           <div id="success"></div>
           <!-- For success/fail messages -->
           <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
@@ -103,33 +112,7 @@ include_once 'partials/parseProfile.php';
 
     </div>
 
-    <div class="row">
 
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </a>
-      </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </a>
-      </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </a>
-      </div>
-
-      <div class="col-md-3 col-sm-6 mb-4">
-        <a href="#">
-          <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-        </a>
-      </div>
-
-    </div>
     <!-- /.row -->
 
   </div>

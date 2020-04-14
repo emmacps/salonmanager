@@ -18,9 +18,9 @@ include_once 'partials/parseProfile.php';
             <li class="list-group-item"><b>Date Joined: </b><?php if(isset($date_joined)) echo $date_joined; ?></li>
           </ul>
           <div class="card-body">
-            <a href="#" class="btn btn-info mb-2">Edit Profile</a>
-            <a href="#" class="btn btn-warning mb-2">Change Password</a>
-            <a href="#" class="btn btn-danger">Deactivate Account</a>
+            <a href="edit-profile.php?user_identity=<?php if(isset($encode_id)) echo $encode_id; ?>" class="btn btn-info mb-2">Edit Profile</a>
+            <a href="update-password.php?user_identity=<?php if(isset($encode_id)) echo $encode_id; ?>" class="btn btn-warning mb-2">Change Password</a>
+            <a href="deactivate-account.php?user_identity=<?php if(isset($encode_id)) echo $encode_id; ?>" class="btn btn-danger">Deactivate Account</a>
           </div>
         </div>
       </div>
@@ -28,26 +28,113 @@ include_once 'partials/parseProfile.php';
         <div class="card">
           <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#salon" role="tab" aria-controls="home" aria-selected="true">Salon Description</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#appoint" role="tab" aria-controls="profile" aria-selected="false">Appointments</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Services</a>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
+  <div class="tab-pane fade show active m-3" id="salon" role="tabpanel" aria-labelledby="home-tab">
+    <h4>Profile</h4>
+    <?php if(isset($des)) echo $des; ?> <br><br>
+    <h4>List of Services</h4>
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Service Name</th>
+      <th scope="col">Service Description</th>
+      <th scope="col">Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <div class="tab-pane fade m-3" id="appoint" role="tabpanel" aria-labelledby="profile-tab">
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Tel.</th>
+      <th scope="col">Service</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+  </div>
+  <div class="tab-pane fade m-3" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+    <h4>Add Your Services</h4>
+        <form class="" action="" method="post">
+          <div class="form-group">
+        <label for="">Salon Service Name</label>
+        <input type="text" name="" class="form-control" autocomplete=" required">
+      </div>
+      <div class="form-group">
+        <label for="">Service Description</label>
+        <input type="text" name="" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="">Price</label>
+        <input type="text" name="" class="form-control">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+  </div>
 </div>
       </div>
       </div>
   </div>
 </div>
 
-<div class="container">
+<!-- <div class="container">
     <div >
         <h1>Profile</h1>
         <?php if(!isset($_SESSION['username'])): ?>
@@ -83,7 +170,7 @@ include_once 'partials/parseProfile.php';
             </section>
         <?php endif ?>
     </div>
-</div>
+</div> -->
 <?php include_once 'partials/footers.php'; ?>
 </body>
 </html>
