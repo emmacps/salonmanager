@@ -29,6 +29,8 @@ if(isset($_POST['signupBtn'], $_POST['token'])){
 
         //collect form data and store in variables
         $email = $_POST['email'];
+        $shop_name = "Your Shop Name";
+        $des = "Short Description";
         $username = $_POST['username'];
         $password = $_POST['password'];
 
@@ -44,14 +46,14 @@ if(isset($_POST['signupBtn'], $_POST['token'])){
             $hashed_password = password_hash($password, PASSWORD_DEFAULT);
             try{
                 //create SQL insert statement
-                $sqlInsert = "INSERT INTO users (username, email, password, join_date)
-              VALUES (:username, :email, :password, now())";
+                $sqlInsert = "INSERT INTO users (shop_name, des, username, email, password, join_date)
+              VALUES (:shop_name, :des, :username, :email, :password, now())";
 
                 //use PDO prepared to sanitize data
                 $statement = $db->prepare($sqlInsert);
 
                 //add the data into the database
-                $statement->execute(array(':username' => $username, ':email' => $email, ':password' => $hashed_password));
+                $statement->execute(array(':shop_name' => $shop_name, ':des' => $des, ':username' => $username, ':email' => $email, ':password' => $hashed_password));
                 //check if one new row was created
                 if($statement->rowCount() == 1){
 
