@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Apr 01, 2020 at 01:51 AM
+-- Generation Time: Apr 15, 2020 at 02:40 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -61,6 +61,7 @@ DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(6) UNSIGNED NOT NULL AUTO_INCREMENT,
   `shop_name` varchar(255) NOT NULL,
+  `des` text NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
@@ -76,11 +77,11 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `shop_name`, `username`, `password`, `email`, `activated`, `avatar`, `join_date`) VALUES
-(7, '', 'emmacps', '$2y$10$VcYrUSUqgMJPC9PKjN2hW.XiMKYaq.mPxw1g.u4N2BdNdDnk4ePoq', 'emmacps001@gmail.com', '1', 'uploads/emmacpse9fe98669149a422981e5c1a96d7fd09.jpg', '2020-02-19 23:10:21'),
-(8, '', 'wandy', '$2y$10$EueMpHmUbPubWRFD7wCFj.Z1QEdjv6svAPwJEP8XkTAV1pVvUu8lm', 'wandy@gmail.com', '1', 'uploads/wandy2f95e6a98d5ec6657dbbd30f6ae0331b.png', '2020-03-05 03:52:54'),
-(9, 'tech home', 'samuel001', '$2y$10$1Gn2gK3xYY5qT1jKZGUmJ.OV7I.BP3pRjU8NjhFcW9CwsdxFXOmD.', 'samuelasare0001@gmail.com', '1', 'uploads/samuelb8b61ef66cff7ab1555d28a29dcc86a6.jpg', '2020-03-31 02:10:43'),
-(10, '', 'festus', '$2y$10$cDA/qlNb9ybGoQVyRM22L.4oHUPr5gOnMOpVS/XiH/cuGqfmRe.iW', 'festus001@gmail.com', '0', 'uploads/default.jpg', '2020-03-14 03:21:57');
+INSERT INTO `users` (`id`, `shop_name`, `des`, `username`, `password`, `email`, `activated`, `avatar`, `join_date`) VALUES
+(7, '', '', 'emmacps', '$2y$10$VcYrUSUqgMJPC9PKjN2hW.XiMKYaq.mPxw1g.u4N2BdNdDnk4ePoq', 'emmacps001@gmail.com', '1', 'uploads/emmacpse9fe98669149a422981e5c1a96d7fd09.jpg', '2020-02-19 23:10:21'),
+(8, '', '', 'wandy', '$2y$10$EueMpHmUbPubWRFD7wCFj.Z1QEdjv6svAPwJEP8XkTAV1pVvUu8lm', 'wandy@gmail.com', '1', 'uploads/wandy2f95e6a98d5ec6657dbbd30f6ae0331b.png', '2020-03-05 03:52:54'),
+(9, 'tech home salon', '                          Testing this box   for salon description                  ', 'samuel001', '$2y$10$1Gn2gK3xYY5qT1jKZGUmJ.OV7I.BP3pRjU8NjhFcW9CwsdxFXOmD.', 'samuelasare0001@gmail.com', '1', 'uploads/samuelb8b61ef66cff7ab1555d28a29dcc86a6.jpg', '2020-04-14 01:32:42'),
+(10, '', '', 'festus', '$2y$10$cDA/qlNb9ybGoQVyRM22L.4oHUPr5gOnMOpVS/XiH/cuGqfmRe.iW', 'festus001@gmail.com', '0', 'uploads/default.jpg', '2020-03-14 03:21:57');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
