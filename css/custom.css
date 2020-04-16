@@ -39,3 +39,17 @@ label[for="activate_service"] + input {
     position: relative;
     top: 7px;
 }
+ul.shop_profile_services {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+}
+ul.shop_profile_services li {
+    background-color: #d3ddff;
+    padding: 10px 20px;
+		border-radius: 3px;
+		margin-bottom: 10px;
+}
+ul.shop_profile_services li h3 {
+    margin-bottom: 0;
+}

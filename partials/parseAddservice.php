@@ -75,6 +75,25 @@ if(isset($_POST['addserviceBtn'], $_POST['token'])){
 
   }
 
+	// Check if url contains a "u" a parameter
+	if(isset($_GET['u'])) {
+		
+		$uname = $_GET['u'];
+
+		$sqlQuery = "SELECT id FROM users WHERE username = :uname ";
+		$statement = $db->prepare($sqlQuery);
+		$statement->execute(array(':uname' => $uname));
+
+		$uid = $statement->fetch(PDO::FETCH_OBJ)->id;
+
+		$sqlQuery = "SELECT * FROM services WHERE user_id = :userid AND service_active = 1";
+		$statement = $db->prepare($sqlQuery);
+		$statement->execute(array(':userid' => $uid));
+
+		$shopservices = $statement->fetchAll(PDO::FETCH_OBJ);
+
+	}
+
 	if(isset($_SESSION['id'])) {
 			
 		$id = $_SESSION['id'];
@@ -86,7 +105,7 @@ if(isset($_POST['addserviceBtn'], $_POST['token'])){
 		$services = $statement->fetchAll(PDO::FETCH_OBJ);
 
 	}
-
+	
 	if(isset($_GET['action'], $_GET['id'])) {
 		
 		$id = $_SESSION['id'];

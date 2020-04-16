@@ -2,6 +2,7 @@
 $page_title = "User Authentication -  {$_GET['u']}'s Profile";
 include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
+include_once 'partials/parseAddservice.php';
 
 ?>
 
@@ -30,12 +31,20 @@ include_once 'partials/parseProfile.php';
       <div class="col-md-4">
         <h3 class="my-3">Salon Description</h3>
         <p><?php if(isset($des)) echo $des; ?></p>
-        <h3 class="my-3">Project Details</h3>
-        <ul>
-          <li>Lorem Ipsum</li>
-          <li>Dolor Sit Amet</li>
-          <li>Consectetur</li>
-          <li>Adipiscing Elit</li>
+        <h3 class="my-3">Services Provided</h3>
+        <ul class="shop_profile_services">
+					<?php
+						if( count($shopservices) > 0 ):
+							foreach( $shopservices as $service ):
+					?>
+								<li>
+									<h3><?php echo $service->service_name ?></h3>
+									<small><strong>Amount:</strong> <?php echo $service->service_price ?></small>
+								</li>
+					<?php
+							endforeach;
+						endif;
+					?>
         </ul>
       </div>
 
@@ -71,10 +80,16 @@ include_once 'partials/parseProfile.php';
             <div class="controls">
               <label>Select Service</label>
               <select class="form-control" name="">
-                <option value="">Slect your service</option>
-                <option value="">Perming</option>
-                <option value="">Washing</option>
-                <option value="">Raster</option>
+								<option value="">Slect your service</option>
+								<?php
+									if( count($shopservices) > 0 ):
+										foreach( $shopservices as $service ):
+								?>											
+                			<option value="<?php echo $service->id ?>"><?php echo $service->service_name." - ". $service->service_price ?></option>
+								<?php
+										endforeach;
+									endif;
+								?>
               </select>
             </div>
           </div>
