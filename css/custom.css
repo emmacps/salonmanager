@@ -32,3 +32,10 @@ body {
 .top-padding{
   padding:60px 0 60px 0;
 }
+label[for="activate_service"] + input {
+    display: inline-block;
+    width: 27px;
+    height: 27px;
+    position: relative;
+    top: 7px;
+}
