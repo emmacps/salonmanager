@@ -35,12 +35,12 @@ if(isset($_POST['deleteAccountBtn'], $_POST['token'])){
                         //STEP 4 notification the user via email and display confirmation alert
                         //prepare email body
                         $mail_body = '<html>
-                        <body style="background-color:#CCCCCC; color:#000; font-family: Arial, 
+                        <body style="background-color:#CCCCCC; color:#000; font-family: Arial,
                             Helvetica, sans-serif; line-height:1.8em;">
                             <h2>User Authentication: Code A Secured Login System</h2>
                             <p>Dear '.$username.'<br><br>You have requested to deactivate your account,
-                            your account information will be kept for 14 days, 
-                            if you wish to continue using this system login within the next 14 days 
+                            your account information will be kept for 14 days,
+                            if you wish to continue using this system login within the next 14 days
                             to reactivate your account or it will be permanently deleted.</p>
                             <p><a href="http://auth.dev/login.php">Sign In</a></p>
                             <p><strong>&copy;2016 ICT DesighHUB</strong></p>

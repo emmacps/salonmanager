@@ -1,6 +1,8 @@
 <?php
 /**
- * @param $required_fields_array, n array containing the list of all required fields
+ * @param $required_fields_array, n array containing the list of all
+
+
  * @return array, containing all errors
  */
 function check_empty_fields($required_fields_array){
