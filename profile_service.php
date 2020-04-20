@@ -31,14 +31,13 @@ include_once 'partials/parseAddservice.php';
             <a class="nav-link btn btn-primary mr-2" href="profile.php">Profile</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link btn btn-success" href="profile_service.php">Services</a>
+            <a class="nav-link btn btn-success mr-2" href="profile_service.php">Services</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+           <li class="nav-item">
+              <a class="nav-link btn btn-info" href="profile_appointment.php">Appointments</a>
+            </li>
+         
+         
         </ul><br>
         <div class="card p-2">
     <h4><?php echo ( isset($serviceToUpdate) && !empty($serviceToUpdate->id) ) ? 'Update Service ('.$serviceToUpdate->service_name.')' : 'Add New Service' ?></h4>
@@ -85,7 +84,7 @@ include_once 'partials/parseAddservice.php';
               </thead>
               <tbody>
 							<?php 
-								if( count($services) > 0): 
+								if(count($services) > 0): 
 									foreach( $services as $service ):
 							?>
 									<tr>

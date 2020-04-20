@@ -8,7 +8,7 @@ include_once 'partials/parseAddservice.php';
 <div class="container top-padding">
   <div class="row">
       <div class="col-md-4">
-        <div class="card" style="width: 18rem;">
+        <div class="card">
           <img src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" class="card-img-top" alt="...">
           <div class="card-body">
             <h4 class="card-title"><?php if(isset($shop_name)) echo $shop_name; ?></h4>
@@ -31,14 +31,12 @@ include_once 'partials/parseAddservice.php';
               <a class="nav-link btn btn-primary mr-2" href="profile.php">Profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link btn btn-success" href="profile_service">Services</a>
+              <a class="nav-link btn btn-success mr-2" href="profile_service">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
+              <a class="nav-link btn btn-info" href="profile_appointment.php">Appointments</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
+            
           </ul><br>
           <div class="card p-2">
             <h4>Profile</h4>

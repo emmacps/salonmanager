@@ -3,6 +3,7 @@ $page_title = "User Authentication -  {$_GET['u']}'s Profile";
 include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
 include_once 'partials/parseAddservice.php';
+include_once 'partials/parseAddappoints.php';
 
 ?>
 
@@ -24,11 +25,11 @@ include_once 'partials/parseAddservice.php';
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-8">
+      <div class="col-md-4">
         <img class="img-fluid" src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" alt="">
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-8">
         <h3 class="my-3">Salon Description</h3>
         <p><?php if(isset($des)) echo $des; ?></p>
         <h3 class="my-3">Services Provided</h3>
@@ -48,7 +49,7 @@ include_once 'partials/parseAddservice.php';
         </ul>
       </div>
 
-    </div>
+    </div> <br><br>
     <!-- /.row -->
 
     <!-- Related Projects Row -->
@@ -57,29 +58,33 @@ include_once 'partials/parseAddservice.php';
     <div class="row">
       <div class="col-lg-8 mb-4">
         <h3>Book an Appointment</h3>
-        <form name="">
+        <div>
+        <?php if(isset($result)) echo $result; ?>
+        <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
+    </div>
+        <form action="" method="post">
           <div class="control-group form-group">
             <div class="controls">
               <label>Full Name:</label>
-              <input type="text" class="form-control" name="" required>
+              <input type="text" class="form-control" name="fname">
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Phone Number:</label>
-              <input type="text" class="form-control" name="" required="">
+              <input type="text" class="form-control" name="number">
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Email Address:</label>
-              <input type="email" class="form-control" name="" required="">
+              <input type="email" class="form-control" name="email">
             </div>
           </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Select Service</label>
-              <select class="form-control" name="">
+              <select class="form-control" name="select_service">
 								<option value="">Slect your service</option>
 								<?php
 									if( count($shopservices) > 0 ):
@@ -97,31 +102,19 @@ include_once 'partials/parseAddservice.php';
           <div class="control-group form-group">
             <label>Prefered Mode of Service:  </label>
             <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="contact" value="phone">
+            <input class="form-check-input" type="radio" name="service_mode" value="Home Service">
             <label class="form-check-label">Home Service</label>
           </div>
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="contact" value="email">
+            <input class="form-check-input" type="radio" name="service_mode" value="Walk-in Service">
             <label class="form-check-label" for="inlineRadio2">Walk-in Service</label>
           </div>
           </div>
 
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>Appointment Date</label>
-              <input type="date" name="meeting-time" class="form-control" required>
-            </div>
-          </div>
-          <div class="control-group form-group">
-            <div class="controls">
-              <label>Appointment Time</label>
-              <input type="time" name="meeting-time" class="form-control" required>
-            </div>
-          </div>
-
-          <div id="success"></div>
-          <!-- For success/fail messages -->
-          <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+          <!-- INSERT TIME AND DATE HERE -->
+           <input type="hidden" name="user_id" value="<?php if(isset($id)) echo $id; ?>">
+      <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
+          <button type="submit" name="bookappointBtn" class="btn btn-primary">Book Appointment</button>
         </form>
       </div>
 
