@@ -11,6 +11,7 @@ if(isset($_GET['u'])){
 
     while($rs = $statement->fetch()){
         $shop_name = $rs['shop_name'];
+        $shop_id = $rs['id'];
         $des = $rs['des'];
         $username = $rs['username'];
         $profile_picture = $rs['avatar'];
@@ -35,6 +36,7 @@ else if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_PO
 
     while($rs = $statement->fetch()){
         $shop_name = $rs['shop_name'];
+        $shop_id = $rs['id'];
         $des = $rs['des'];
         $username = $rs['username'];
         $email = $rs['email'];
