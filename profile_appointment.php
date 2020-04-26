@@ -8,7 +8,7 @@ include_once 'partials/parseAddservice.php';
 
 <div class="container top-padding">
   <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="card">
           <img src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" class="card-img-top" alt="...">
           <div class="card-body">
@@ -26,7 +26,7 @@ include_once 'partials/parseAddservice.php';
           </div>
         </div>
       </div>
-      <div class="col-md-8">
+      <div class="col-md-9">
          <ul class="nav justify-content-center">
             <li class="nav-item">
               <a class="nav-link btn btn-primary mr-2" href="profile.php">Profile</a>
@@ -61,7 +61,7 @@ include_once 'partials/parseAddservice.php';
       foreach ($appoints as $appoint) :
        ?>
 
-        <tr class="<?php echo $appoint->status == 1 ? 'bg-success text-white': $appoint->status == 2 ? 'bg-warning': $appoint->status == 4 ? 'bg-danger text-white':'' ?>">
+        <tr class="<?php echo ($appoint->status == 1) ? 'bg-success text-white': ''; echo ($appoint->status == 2) ? 'bg-warning': ''; echo ($appoint->status == 4) ? 'bg-danger text-white':'' ?>">
           <td><?php echo $appoint->fname; ?></td>
           <td><?php echo $appoint->number; ?></td>
           <td><?php echo $appoint->email; ?></td>
