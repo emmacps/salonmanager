@@ -104,6 +104,12 @@ if(isset($_POST['addserviceBtn'], $_POST['token'])){
 
 		$services = $statement->fetchAll(PDO::FETCH_OBJ);
 
+		$sqlQuery = "SELECT * FROM services";
+		$statement = $db->prepare($sqlQuery);
+		$statement->execute(array(':id' => $id));
+
+		$allservices = $statement->fetchAll(PDO::FETCH_OBJ);
+
 	}
 	
 	if(isset($_GET['action'], $_GET['id'])) {
@@ -121,6 +127,33 @@ if(isset($_POST['addserviceBtn'], $_POST['token'])){
 
 			$serviceToUpdate = $statement->fetch(PDO::FETCH_OBJ);
 
+		}
+		if( $action == 'delete' ) {
+			//SQL insert $statement
+			$sqlUpdate = "DELETE FROM services WHERE user_id =:uid AND id =:sid ";
+
+			//use PDO prepare to sanitize data
+			$statement = $db->prepare($sqlUpdate);
+
+			//add data into Database
+			$statement->execute(array(':uid' => $user_id, ':sid' => $sid ));
+
+			//check if one new row was created
+			if($statement->rowCount() == 1){
+
+				$result = "<script type=\"text/javascript\">
+						swal({
+						title: \"UPDATED!\",
+						text: \"Service Deleted Successfully\",
+						type: 'success',
+						confirmButtonText: \"OKay!\" });
+
+						setTimeout(() => {
+							window.location.assign('profile_service.php');
+						}, 1500)						
+				</script>";
+
+			}
 		}
 		if( $action == 'activate' ) {
 			//SQL insert $statement
