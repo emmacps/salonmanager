@@ -19,6 +19,7 @@ error_reporting(E_ALL);
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/sweetalert.css">
+    <link rel="stylesheet" href="css/datepicker.min.css">
     <link href="css/custom.css" rel="stylesheet">
 
 
