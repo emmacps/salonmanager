@@ -2,6 +2,7 @@
 $page_title = "User Authentication - Profile";
 include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
+include_once 'partials/parseAddappoints.php';
 include_once 'partials/parseAddservice.php';
 ?>
 
@@ -48,6 +49,7 @@ include_once 'partials/parseAddservice.php';
       <th scope="col">Full Name</th>
       <th scope="col">Number</th>
       <th scope="col">Email</th>
+      <th scope="col">Date</th>
       <th scope="col">Select Selected</th>
       <th scope="col">Mode of Service</th>
       <th>Action</th>
@@ -59,9 +61,35 @@ include_once 'partials/parseAddservice.php';
       foreach ($appoints as $appoint) :
        ?>
 
-        <tr>
-          <th><?php echo $appoint->fname; ?></th>
-          <th><?php echo $appoint->number; ?></th>
+        <tr class="<?php echo $appoint->status == 1 ? 'bg-success text-white': $appoint->status == 2 ? 'bg-warning': $appoint->status == 4 ? 'bg-danger text-white':'' ?>">
+          <td><?php echo $appoint->fname; ?></td>
+          <td><?php echo $appoint->number; ?></td>
+          <td><?php echo $appoint->email; ?></td>
+          <td><?php echo date('jS, M, Y', strtotime($appoint->date)); ?></td>
+					<?php foreach( $allservices as $service ): 
+						if( $service->id == $appoint->select_service ):
+					?>
+          	<td><?php echo $service->service_name; ?></td>
+					<?php 
+							endif;
+						endforeach; 
+					?>
+					<td><?php echo $appoint->service_mode; ?></td>
+					<td>
+						<?php if( $appoint->status != 4 ): ?>
+							<a href="profile_appointment.php?action=cancel&id=<?php echo $appoint->id ?>" class="btn btn-danger mb-2">Cancel</a>
+							<?php if( $appoint->salon_id == $shop_id ): ?>
+								<?php if( $appoint->status == 0 || $appoint->status == 1 ): ?>
+									<a href="profile_appointment.php?action=reject&id=<?php echo $appoint->id ?>" class="btn btn-primary mb-2">Reject</a>
+								<?php endif; ?>
+								<?php if( $appoint->status == 0 || $appoint->status == 2 ): ?>
+									<a href="profile_appointment.php?action=accept&id=<?php echo $appoint->id ?>" class="btn btn-success mb-2">Accept</a>
+								<?php endif; ?>
+							<?php endif; ?>
+						<?php else: ?>
+							Cancelled or Rejected
+						<?php endif; ?>
+					</td>
         </tr>
      
 
@@ -75,27 +103,6 @@ include_once 'partials/parseAddservice.php';
               <th colspan="4">No Appointment found.</th>
           </tr>
       <?php endif; ?>
-    <tr>
-      <th scope="row">1</th>
-      <td>Mark</td>
-      <td>Otto</td>
-      <td>@mdo</td>
-      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>Thornton</td>
-      <td>@fat</td>
-      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>the Bird</td>
-      <td>@twitter</td>
-      <td><a href="" class="btn btn-warning">Edit</a>  <a href="" class="btn btn-danger">Delete</a></td>
-    </tr>
   </tbody>
 </table>
   </div>
