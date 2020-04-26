@@ -43,6 +43,7 @@ include_once 'partials/parseAddservice.php';
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active m-3" id="salon" role="tabpanel" aria-labelledby="home-tab">
     <h4>Appointment List</h4>
+		<?php if(isset($result)) echo $result; ?>
     <table class="table">
   <thead>
     <tr>
@@ -61,7 +62,7 @@ include_once 'partials/parseAddservice.php';
       foreach ($appoints as $appoint) :
        ?>
 
-        <tr class="<?php echo ($appoint->status == 1) ? 'bg-success text-white': ''; echo ($appoint->status == 2) ? 'bg-warning': ''; echo ($appoint->status == 4) ? 'bg-danger text-white':'' ?>">
+        <tr class="<?php echo ($appoint->status == 1) ? 'bg-success text-white': ''; echo ($appoint->status == 2) ? 'bg-warning': ''; echo ($appoint->status == 3) ? 'bg-danger text-white':'' ?>">
           <td><?php echo $appoint->fname; ?></td>
           <td><?php echo $appoint->number; ?></td>
           <td><?php echo $appoint->email; ?></td>
@@ -76,18 +77,20 @@ include_once 'partials/parseAddservice.php';
 					?>
 					<td><?php echo $appoint->service_mode; ?></td>
 					<td>
-						<?php if( $appoint->status != 4 ): ?>
+						<?php if( $appoint->status == 1 || $appoint->status == 0 ): ?>
 							<a href="profile_appointment.php?action=cancel&id=<?php echo $appoint->id ?>" class="btn btn-danger mb-2">Cancel</a>
 							<?php if( $appoint->salon_id == $shop_id ): ?>
-								<?php if( $appoint->status == 0 || $appoint->status == 1 ): ?>
+								<?php if( $appoint->status == 0 ): ?>
 									<a href="profile_appointment.php?action=reject&id=<?php echo $appoint->id ?>" class="btn btn-primary mb-2">Reject</a>
 								<?php endif; ?>
-								<?php if( $appoint->status == 0 || $appoint->status == 2 ): ?>
+								<?php if( $appoint->status == 0): ?>
 									<a href="profile_appointment.php?action=accept&id=<?php echo $appoint->id ?>" class="btn btn-success mb-2">Accept</a>
 								<?php endif; ?>
 							<?php endif; ?>
+						<?php elseif( $appoint->status == 2 ): ?>
+							Rejected
 						<?php else: ?>
-							Cancelled or Rejected
+							Cancelled
 						<?php endif; ?>
 					</td>
         </tr>

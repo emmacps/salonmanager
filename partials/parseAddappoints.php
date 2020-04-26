@@ -100,7 +100,7 @@ if(isset($_SESSION['id'])){
 			$statement = $db->prepare($sqlUpdate);
 
 			//add data into Database
-			$statement->execute(array(':status' => 4, ':aid' => $aid ));
+			$statement->execute(array(':status' => 3, ':aid' => $aid ));
 
 			//check if one new row was created
 			if($statement->rowCount() == 1){
@@ -121,7 +121,7 @@ if(isset($_SESSION['id'])){
 		}
 		if( $action == 'reject' ) {
 			//SQL insert $statement
-			$sqlUpdate = "UPDATE appoint SET status = :status WHERE id =:aid ";
+			$sqlUpdate = "UPDATE appoint SET status = :status WHERE id = :aid ";
 
 			//use PDO prepare to sanitize data
 			$statement = $db->prepare($sqlUpdate);
