@@ -3,6 +3,11 @@ $page_title = "User Authentication - Profile";
 include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
 include_once 'partials/parseAddservice.php';
+
+if(!isset($_SESSION['id'])) {
+	redirectTo('index');
+}
+
 ?>
 
 <div class="container top-padding">
