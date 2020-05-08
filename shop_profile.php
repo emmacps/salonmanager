@@ -113,10 +113,9 @@ include_once 'partials/parseAddappoints.php';
           <div class="control-group form-group">
             <div class="controls">
               <label>Date:</label>
-              <input type="text" class="form-control dpicker" name="date">
+              <input type="text" class="form-control dpicker" name="date" autocomplete="off">
             </div>
           </div>
-           <input type="hidden" name="user_id" value="<?php if(isset($id)) echo $id; ?>">
            <input type="hidden" name="shop_id" value="<?php if(isset($shop_id)) echo $shop_id; ?>">
       <input type="hidden" name="token" value="<?php if(function_exists('_token')) echo _token(); ?>">
           <button type="submit" name="bookappointBtn" class="btn btn-primary">Book Appointment</button>

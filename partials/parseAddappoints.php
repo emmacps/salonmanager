@@ -13,8 +13,7 @@ if(isset($_POST['bookappointBtn'], $_POST['token'])){
 		$form_errors = array();
 
 		// form validation
-		$required_fields = array('user_id', 'shop_id', 'fname', 'number', 'email', 'select_service', 'service_mode', 'date');
-		$_POST['user_id'] = isset($_SESSION['id']) ? $_SESSION['id']:'';
+		$required_fields = array('shop_id', 'fname', 'number', 'email', 'select_service', 'service_mode', 'date');
 		 //check empty Fields
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
@@ -26,7 +25,6 @@ if(isset($_POST['bookappointBtn'], $_POST['token'])){
 
     if(empty($form_errors)){
 			
-			$user_id = $_POST['user_id'];
 			$salon_id = $_POST['shop_id'];
 			$fname = $_POST['fname'];
 			$number = $_POST['number'];
@@ -37,12 +35,12 @@ if(isset($_POST['bookappointBtn'], $_POST['token'])){
 		
     	//SQL INSET STATEMENT
 
-    	$sqlInsert = "INSERT INTO appoint (id, user_id, salon_id, fname, number, email, select_service, service_mode, date, status) VALUES(null, :user_id, :salon_id, :fname, :number, :email, :select_service, :service_mode, :date, :status)";
+    	$sqlInsert = "INSERT INTO appoint (id, salon_id, fname, number, email, select_service, service_mode, date, status) VALUES(null, :salon_id, :fname, :number, :email, :select_service, :service_mode, :date, :status)";
 
     	 //use PDO prepared to sanitize data
          $statement = $db->prepare($sqlInsert);
 
-         $statement->execute(array(':user_id' => $user_id, ':salon_id' => $salon_id, ':fname' => $fname, ':number' => $number, ':email' => $email, ':select_service' => $select_service, ':service_mode' => $service_mode, ':date' => $date, ':status' => 0));
+         $statement->execute(array(':salon_id' => $salon_id, ':fname' => $fname, ':number' => $number, ':email' => $email, ':select_service' => $select_service, ':service_mode' => $service_mode, ':date' => $date, ':status' => 0));
 
          //chech if record was inserted
          if($statement->rowCount() == 1){
@@ -76,9 +74,9 @@ if(isset($_SESSION['id'])){
 
 	$id = $_SESSION['id'];
 
-	$sqlQuery = "SELECT * FROM appoint WHERE user_id = :id OR salon_id = :sid ";
+	$sqlQuery = "SELECT * FROM appoint WHERE salon_id = :sid ";
 	$statement = $db->prepare($sqlQuery);
-	$statement->execute(array('id' => $id, 'sid' => $id));
+	$statement->execute(array('sid' => $id));
 
 	$appoints = $statement->fetchAll(PDO::FETCH_OBJ);
 	
