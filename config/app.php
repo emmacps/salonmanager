@@ -4,7 +4,7 @@ return [
     'database' => [
         'driver' => 'mysql',
         'host' => 'localhost',
-        'dbname' => 'register',
+        'dbname' => 'salon',
         'username' => 'root',
         'password' => ''
     ],

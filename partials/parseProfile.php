@@ -112,7 +112,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
 
                         $avatar_path = uploadAvatar($username);
                         if(!$avatar_path){
-                            $avatar_path = "uploads/default.jpg";
+                            $avatar_path = "uploads/default.png";
                         }
                         //use PDO prepared to sanitize data
                         $statement = $db->prepare($sqlUpdate);

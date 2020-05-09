@@ -224,6 +224,7 @@ function isValidImage($file){
 
     switch(strtolower($extension)){
         case 'jpg':
+        case 'jpeg':
         case 'gif':
         case 'bmp':
         case 'png':
