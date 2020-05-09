@@ -4,17 +4,17 @@ return [
     'database' => [
         'driver' => 'mysql',
         'host' => 'localhost',
-        'dbname' => 'salon',
+        'dbname' => 'register',
         'username' => 'root',
-        'password' => 'people'
+        'password' => ''
     ],
     'mail' => [
         'transport' => 'smtp',
         'encrption' => 'tls',
         'port' => 587,
         'host' => 'smtp.gmail.com',
-        'username' => '[YOUR-GMAIL-EMAIL]',
-        'password' => '[YOUR-GMAIL-PASSWORD]',
+        'username' => 'emmacps001@gmail.com',
+        'password' => 'P@55w0rd#12',
         'from' => 'no-reply@salonmanager.com',
         'sender_name' => 'Salon Manager'
     ],
