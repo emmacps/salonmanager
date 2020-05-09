@@ -8,7 +8,6 @@ include_once 'partials/parseAddservice.php';
 if(!isset($_SESSION['id'])) {
 	redirectTo('index');
 }
-
 ?>
 
 <div class="container top-padding">

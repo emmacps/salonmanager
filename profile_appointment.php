@@ -2,8 +2,8 @@
 $page_title = "User Authentication - Profile";
 include_once 'partials/headers.php';
 include_once 'partials/parseProfile.php';
-include_once 'partials/parseAddappoints.php';
 include_once 'partials/parseAddservice.php';
+include_once 'partials/parseAddappoints.php';
 
 
 if(!isset($_SESSION['id'])) {
@@ -83,13 +83,13 @@ if(!isset($_SESSION['id'])) {
 					<td><?php echo $appoint->service_mode; ?></td>
 					<td>
 						<?php if( $appoint->status == 1 || $appoint->status == 0 ): ?>
-							<a href="profile_appointment.php?action=cancel&id=<?php echo $appoint->id ?>" class="btn btn-danger mb-2">Cancel</a>
+							<a href="profile_appointment.php?action=cancel&id=<?php echo $appoint->id ?>&details=<?php echo base64_encode(json_encode($appoint)) ?>&shop=<?php echo base64_encode(json_encode($shop_name)) ?>" class="btn btn-danger mb-2">Cancel</a>
 							<?php if( $appoint->salon_id == $shop_id ): ?>
 								<?php if( $appoint->status == 0 ): ?>
-									<a href="profile_appointment.php?action=reject&id=<?php echo $appoint->id ?>" class="btn btn-primary mb-2">Reject</a>
+									<a href="profile_appointment.php?action=reject&id=<?php echo $appoint->id ?>&details=<?php echo base64_encode(json_encode($appoint)) ?>&shop=<?php echo base64_encode(json_encode($shop_name)) ?>" class="btn btn-primary mb-2">Reject</a>
 								<?php endif; ?>
 								<?php if( $appoint->status == 0): ?>
-									<a href="profile_appointment.php?action=accept&id=<?php echo $appoint->id ?>" class="btn btn-success mb-2">Accept</a>
+									<a href="profile_appointment.php?action=accept&id=<?php echo $appoint->id ?>&details=<?php echo base64_encode(json_encode($appoint)) ?>&shop=<?php echo base64_encode(json_encode($shop_name)) ?>" class="btn btn-success mb-2">Accept</a>
 								<?php endif; ?>
 							<?php endif; ?>
 						<?php elseif( $appoint->status == 2 ): ?>

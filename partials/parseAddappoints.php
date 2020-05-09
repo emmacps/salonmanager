@@ -3,6 +3,7 @@
 //add scripts
 include_once 'resource/Database.php';
 include_once 'resource/utilities.php';
+include_once 'resource/send-email.php';
 
 
 if(isset($_POST['bookappointBtn'], $_POST['token'])){
@@ -83,13 +84,15 @@ if(isset($_SESSION['id'])){
 }
 
 
-	if(isset($_GET['action'], $_GET['id'])) {
+	if(isset($_GET['action'], $_GET['id'], $_GET['details'])) {
 		
 		$id = $_SESSION['id'];
 		$aid = $_GET['id'];
 		$action = $_GET['action'];
+		$user_details = json_decode(base64_decode($_GET['details']));
+		$shop = json_decode(base64_decode($_GET['shop']));
 		$user_id = $_SESSION['id'];
-		
+
 		if( $action == 'cancel' ) {
 			//SQL insert $statement
 			$sqlUpdate = "UPDATE appoint SET status = :status WHERE id =:aid ";
@@ -103,17 +106,59 @@ if(isset($_SESSION['id'])){
 			//check if one new row was created
 			if($statement->rowCount() == 1){
 
-				$result = "<script type=\"text/javascript\">
-						swal({
-						title: \"UPDATED!\",
-						text: \"Appointment Cancelled Successfully\",
-						type: 'success',
-						confirmButtonText: \"OKay!\" });
+				foreach( $allservices as $service ){
+						if( $service->id == $user_details->select_service ){
+							$service_name = $service->service_name;
+						}
+				}
 
-						setTimeout(() => {
-							window.location.assign('profile_appointment.php');
-						}, 1500)						
-				</script>";
+				//prepare email body
+				$mail_body = '<html>
+						<body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
+																line-height:1.8em;">
+						<h2>Hello '.$user_details->fname.',</h2>
+						<p>Your appointment with <strong>'.$shop.'</strong> on '.date('jS, M, Y', strtotime($user_details->date)).' has been cancelled. Below are brief details.<br /><br />
+						Appointment ID: '.$user_details->id.' <br />
+						Service Selected: '.$service_name.' <br />
+						Mode of Service: '.$user_details->service_mode.' <br />
+						</p>
+						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
+						<p><strong>&copy;'.date('Y').'</strong></p>
+						</body>
+						</html>';
+
+				$mail->addAddress($user_details->email, $user_details->fname);
+				$mail->Subject = "Appointment Update";
+				$mail->Body = $mail_body;
+				
+				//Error Handling for PHPMailer
+				if(!$mail->Send()){
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Cancelled Successfully. But failed to notify the client. \",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)		
+						</script>";
+				}else{
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Cancelled Successfully.\",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)						
+						</script>";
+				}
 
 			}
 		}
@@ -130,17 +175,59 @@ if(isset($_SESSION['id'])){
 			//check if one new row was created
 			if($statement->rowCount() == 1){
 
-				$result = "<script type=\"text/javascript\">
-						swal({
-						title: \"UPDATED!\",
-						text: \"Appointment Rejected Successfully\",
-						type: 'success',
-						confirmButtonText: \"OKay!\" });
+				foreach( $allservices as $service ){
+						if( $service->id == $user_details->select_service ){
+							$service_name = $service->service_name;
+						}
+				}
 
-						setTimeout(() => {
-							window.location.assign('profile_appointment.php');
-						}, 1500)						
-				</script>";
+				//prepare email body
+				$mail_body = '<html>
+						<body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
+																line-height:1.8em;">
+						<h2>Hello '.$user_details->fname.',</h2>
+						<p>Your appointment with <strong>'.$shop.'</strong> on '.date('jS, M, Y', strtotime($user_details->date)).' has been rejected. Below are brief details.<br /><br />
+						Appointment ID: '.$user_details->id.' <br />
+						Service Selected: '.$service_name.' <br />
+						Mode of Service: '.$user_details->service_mode.' <br />
+						</p>
+						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
+						<p><strong>&copy;'.date('Y').'</strong></p>
+						</body>
+						</html>';
+
+				$mail->addAddress($user_details->email, $user_details->fname);
+				$mail->Subject = "Appointment Update";
+				$mail->Body = $mail_body;
+				
+				//Error Handling for PHPMailer
+				if(!$mail->Send()){
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Rejected Successfully. But failed to notify the client. \",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)		
+						</script>";
+				}else{
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Rejected Successfully.\",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)						
+						</script>";
+				}
 
 			}
 		}
@@ -157,17 +244,59 @@ if(isset($_SESSION['id'])){
 			//check if one new row was created
 			if($statement->rowCount() == 1){
 
-				$result = "<script type=\"text/javascript\">
-						swal({
-						title: \"UPDATED!\",
-						text: \"Appointment Accepted Successfully\",
-						type: 'success',
-						confirmButtonText: \"OKay!\" });
+				foreach( $allservices as $service ){
+						if( $service->id == $user_details->select_service ){
+							$service_name = $service->service_name;
+						}
+				}
 
-						setTimeout(() => {
-							window.location.assign('profile_appointment.php');
-						}, 1500)						
-				</script>";
+				//prepare email body
+				$mail_body = '<html>
+						<body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
+																line-height:1.8em;">
+						<h2>Hello '.$user_details->fname.',</h2>
+						<p>Your appointment with <strong>'.$shop.'</strong> on '.date('jS, M, Y', strtotime($user_details->date)).' has been accepted. Below are brief details.<br /><br />
+						Appointment ID: '.$user_details->id.' <br />
+						Service Selected: '.$service_name.' <br />
+						Mode of Service: '.$user_details->service_mode.' <br />
+						</p>
+						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
+						<p><strong>&copy;'.date('Y').'</strong></p>
+						</body>
+						</html>';
+
+				$mail->addAddress($user_details->email, $user_details->fname);
+				$mail->Subject = "Appointment Update";
+				$mail->Body = $mail_body;
+				
+				//Error Handling for PHPMailer
+				if(!$mail->Send()){
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Accepted Successfully. But failed to notify the client. \",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)		
+						</script>";
+				}else{
+						
+					$result = "<script type=\"text/javascript\">
+							swal({
+								title: \"UPDATED!\",
+								text: \"Appointment Accepted Successfully.\",
+								type: 'success',
+								confirmButtonText: \"OKay!\" });
+
+								setTimeout(() => {
+									window.location.assign('profile_appointment.php');
+								}, 1500)						
+						</script>";
+				}
 
 			}
 		}
