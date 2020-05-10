@@ -45,7 +45,14 @@ if(!isset($_SESSION['id'])) {
           </ul><br>
           <div class="card p-2">
             <h4>Profile</h4>
-            <?php if(isset($des)) echo $des; ?> <br><br>
+            <?php if(isset($des)) echo $des; ?>
+          </div><br><br>
+          <div class="card p-2">
+            <h4>Link to Google Map</h4>
+            <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Google Map</a> <br><br>
+
+            <h1><a href="https://calendar.google.com/calendar/r">Add To Calender</a></h1>
+
           </div>
       </div>
       </div>

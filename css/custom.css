@@ -53,3 +53,11 @@ ul.shop_profile_services li {
 ul.shop_profile_services li h3 {
     margin-bottom: 0;
 }
+
+u ~ div .gmail-hide {
+display:none;
+}
+
+u ~ div .gmail-show {
+display:block!important;
+}

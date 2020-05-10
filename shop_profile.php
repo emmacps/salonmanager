@@ -26,7 +26,11 @@ include_once 'partials/parseAddappoints.php';
     <div class="row">
 
       <div class="col-md-4">
-        <img class="img-fluid" src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" alt="">
+        <div class="card">
+          <img class="img-fluid img-thumbnail" src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" alt="">
+        </div>
+        <br>
+       <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Visit Us On Google Map</a>
       </div>
 
       <div class="col-md-8">
@@ -109,7 +113,11 @@ include_once 'partials/parseAddappoints.php';
             <input class="form-check-input" type="radio" name="service_mode" value="Walk-in Service">
             <label class="form-check-label" for="inlineRadio2">Walk-in Service</label>
           </div>
-          </div>          
+          </div>
+          <div class="form-group">
+            <label>Enter Mobile Money Payment Transaction ID</label>
+            <input type="text" name="transaction" class="form-control">
+          </div>       
           <div class="control-group form-group">
             <div class="controls">
               <label>Date:</label>

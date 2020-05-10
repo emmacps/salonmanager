@@ -11,7 +11,7 @@ if(!isset($_SESSION['id'])) {
 }
 ?>
 
-<div class="container top-padding">
+<div class="container-fluid p-3 top-padding">
   <div class="row">
       <div class="col-md-3">
         <div class="card">
@@ -56,8 +56,9 @@ if(!isset($_SESSION['id'])) {
       <th scope="col">Number</th>
       <th scope="col">Email</th>
       <th scope="col">Date</th>
-      <th scope="col">Select Selected</th>
+      <th scope="col">Service Selected</th>
       <th scope="col">Mode of Service</th>
+      <th scope="col">Payment Transaction ID</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -75,12 +76,16 @@ if(!isset($_SESSION['id'])) {
 					<?php foreach( $allservices as $service ): 
 						if( $service->id == $appoint->select_service ):
 					?>
-          	<td><?php echo $service->service_name; ?></td>
+          	<td>
+              <?php echo $service->service_name ." " . $service->service_price; ?>
+              
+            </td>
 					<?php 
 							endif;
 						endforeach; 
 					?>
 					<td><?php echo $appoint->service_mode; ?></td>
+          <td><?php echo $appoint->transaction; ?></td>
 					<td>
 						<?php if( $appoint->status == 1 || $appoint->status == 0 ): ?>
 							<a href="profile_appointment.php?action=cancel&id=<?php echo $appoint->id ?>&details=<?php echo base64_encode(json_encode($appoint)) ?>&shop=<?php echo base64_encode(json_encode($shop_name)) ?>" class="btn btn-danger mb-2">Cancel</a>

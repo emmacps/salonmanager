@@ -32,16 +32,17 @@ if(isset($_POST['bookappointBtn'], $_POST['token'])){
 			$email = $_POST['email'];
 			$select_service = $_POST['select_service'];
 			$service_mode = $_POST['service_mode'];
+			$transaction = $_POST['transaction'];
 			$date = $_POST['date'];
 		
     	//SQL INSET STATEMENT
 
-    	$sqlInsert = "INSERT INTO appoint (id, salon_id, fname, number, email, select_service, service_mode, date, status) VALUES(null, :salon_id, :fname, :number, :email, :select_service, :service_mode, :date, :status)";
+    	$sqlInsert = "INSERT INTO appoint (id, salon_id, fname, number, email, select_service, service_mode, transaction, date, status) VALUES(null, :salon_id, :fname, :number, :email, :select_service, :service_mode, :transaction, :date, :status)";
 
     	 //use PDO prepared to sanitize data
          $statement = $db->prepare($sqlInsert);
 
-         $statement->execute(array(':salon_id' => $salon_id, ':fname' => $fname, ':number' => $number, ':email' => $email, ':select_service' => $select_service, ':service_mode' => $service_mode, ':date' => $date, ':status' => 0));
+         $statement->execute(array(':salon_id' => $salon_id, ':fname' => $fname, ':number' => $number, ':email' => $email, ':select_service' => $select_service, ':service_mode' => $service_mode, ':transaction' => $transaction, ':date' => $date, ':status' => 0));
 
          //chech if record was inserted
          if($statement->rowCount() == 1){
@@ -121,6 +122,7 @@ if(isset($_SESSION['id'])){
 						Appointment ID: '.$user_details->id.' <br />
 						Service Selected: '.$service_name.' <br />
 						Mode of Service: '.$user_details->service_mode.' <br />
+						Payment Transaction ID: '.$user_details->transaction.' <br />
 						</p>
 						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
 						<p><strong>&copy;'.date('Y').'</strong></p>
@@ -190,6 +192,7 @@ if(isset($_SESSION['id'])){
 						Appointment ID: '.$user_details->id.' <br />
 						Service Selected: '.$service_name.' <br />
 						Mode of Service: '.$user_details->service_mode.' <br />
+						Payment Transaction ID: '.$user_details->transaction.' <br />
 						</p>
 						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
 						<p><strong>&copy;'.date('Y').'</strong></p>
@@ -247,6 +250,7 @@ if(isset($_SESSION['id'])){
 				foreach( $allservices as $service ){
 						if( $service->id == $user_details->select_service ){
 							$service_name = $service->service_name;
+							$service_price = $service->service_price;
 						}
 				}
 
@@ -258,10 +262,14 @@ if(isset($_SESSION['id'])){
 						<p>Your appointment with <strong>'.$shop.'</strong> on '.date('jS, M, Y', strtotime($user_details->date)).' has been accepted. Below are brief details.<br /><br />
 						Appointment ID: '.$user_details->id.' <br />
 						Service Selected: '.$service_name.' <br />
+						Service Price: '.$service_price.' <br />
 						Mode of Service: '.$user_details->service_mode.' <br />
+						Payment Transaction ID: '.$user_details->transaction.' <br />
 						</p>
+						<h1><a href="https://calendar.google.com/calendar/r" class="btn btn-danger">Add To Calender</a></h1>
 						<p>Kindly contact us If you wish to cancel or change the appointment.</p>
 						<p><strong>&copy;'.date('Y').'</strong></p>
+
 						</body>
 						</html>';
 
