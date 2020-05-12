@@ -13,6 +13,7 @@ if(isset($_GET['u'])){
         $shop_name = $rs['shop_name'];
         $shop_id = $rs['id'];
         $des = $rs['des'];
+        $map = $rs['map'];
         $username = $rs['username'];
         $profile_picture = $rs['avatar'];
         $date_joined =  strftime("%b %d, %Y", strtotime($rs["join_date"]));
@@ -38,6 +39,7 @@ else if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_PO
         $shop_name = $rs['shop_name'];
         $shop_id = $rs['id'];
         $des = $rs['des'];
+        $map = $rs['map'];
         $username = $rs['username'];
         $email = $rs['email'];
         $profile_picture = $rs['avatar'];
@@ -79,6 +81,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
             //collect form data and store in variables
             $shop_name = $_POST['shop_name'];
             $des = $_POST['des'];
+            $map = $_POST['map'];
             $email = $_POST['email'];
             $username = $_POST['username'];
             $hidden_id = $_POST['hidden_id'];
@@ -101,7 +104,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
                         $oldAvatar = $rs['avatar'];
                     }
                     //create SQL update statement
-                    $sqlUpdate = "UPDATE users SET des =:des, shop_name =:shop_name, username =:username, email =:email WHERE id =:id";
+                    $sqlUpdate = "UPDATE users SET des =:des, shop_name =:shop_name, username =:username, map =:map, email =:email WHERE id =:id";
 
                     //use PDO prepared to sanitize data
                     $statement = $db->prepare($sqlUpdate);
@@ -126,7 +129,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
 
                     }else{
                         //update the record in the database
-                        $statement->execute(array(':des' => $des, ':shop_name' => $shop_name, ':username' => $username, ':email' => $email, ':id' => $hidden_id));
+                        $statement->execute(array(':des' => $des, ':shop_name' => $shop_name, ':username' => $username, ':map' => $map, ':email' => $email, ':id' => $hidden_id));
                     }
                     //check if one new row was created
                     if($statement->rowCount() == 1){

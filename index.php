@@ -54,15 +54,13 @@ include_once 'partials/headers.php';
         <h2>We present to you your dream salon closer to your door step.</h2>
         
         <ul>
-          <li>
-            <strong>Bootstrap v4</strong>
-          </li>
-          <li>jQuery</li>
-          <li>Font Awesome</li>
-          <li>Working contact form with validation</li>
-          <li>Unstyled page elements for easy customization</li>
+          <li>Salon</li>
+          <li>Spa</li>
+          <li>Make-ups</li>
+          <li>Massage</li>
+          <li>Relaxation</li>
         </ul>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
+        <p>We present to you the most convience means to book an appointment for all your salon attandnace.</p>
       </div>
       <div class="col-sm-4 col-md-4">
         <img class="img-fluid rounded" src="vendor/images/woman.jpg" alt="">
@@ -75,7 +73,7 @@ include_once 'partials/headers.php';
     <!-- Call to Action Section -->
     <div class="row mb-4">
       <div class="col-md-8">
-        <p>Lesser your worries as we present to you perfect and unique salons. Relax and choose from our numerous salons.</p>
+        <h3>Click here to starting booking.</h3>
       </div>
       <div class="col-md-4">
         <a class="btn btn-lg btn-secondary btn-block" href="shops.php">Book Your Appointment Now</a>

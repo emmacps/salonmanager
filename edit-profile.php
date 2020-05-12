@@ -19,27 +19,29 @@ include_once 'partials/parseProfile.php';
         <?php else: ?>
                 <form method="post" action="" enctype="multipart/form-data">
                     <div class="form-group">
-                        <label for="emailField">Shop Name</label>
+                        <label for="emailField"><b>Shop Name</b></label>
                         <input type="text" name="shop_name" class="form-control" id="" value="<?php if(isset($shop_name)) echo $shop_name; ?>">
                     </div>
                     <div class="form-group">
-                        <label for="emailField">Shop Description</label>
+                        <label for="emailField"><b>Email</b></label>
+                        <input type="text" name="email" class="form-control" id="emailField" value="<?php if(isset($email)) echo $email; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="usernameField"><b>Username</b></label>
+                        <input type="text" name="username" value="<?php if(isset($username)) echo $username; ?>" class="form-control" id="usernameField">
+                    </div>
+                    <div class="form-group">
+                        <label><b>Share your Google Map Location</b></label>
+                        <input type="text" name="map" class="form-control" value="<?php if(isset($map)) echo $map; ?>">
+                    </div>
+                    <div class="form-group">
+                        <label for="emailField"><b>Shop Description</b></label>
                         <textarea class="form-control" name="des" rows="8" cols="80">
                           <?php if(isset($des)) echo $des; ?>
                         </textarea>
                     </div>
                     <div class="form-group">
-                        <label for="emailField">Email</label>
-                        <input type="text" name="email" class="form-control" id="emailField" value="<?php if(isset($email)) echo $email; ?>">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="usernameField">Username</label>
-                        <input type="text" name="username" value="<?php if(isset($username)) echo $username; ?>" class="form-control" id="usernameField">
-                    </div>
-
-                    <div class="form-group">
-                        <label for="fileField">Avatar</label>
+                        <label for="fileField"><b>Avatar</b></label>
                         <input type="file" name="avatar" id="fileField">
                     </div>
 
