@@ -21,6 +21,7 @@ if(!isset($_SESSION['id'])) {
           <ul class="list-group list-group-flush">
             <li class="list-group-item"><b>Username: </b><?php if(isset($username)) echo $username; ?></li>
             <li class="list-group-item"><b>Email: </b><?php if(isset($email)) echo $email; ?></li>
+						<li class="list-group-item"><b>Conatct: </b><?php if(isset($contact)) echo $contact; ?></li>
             <li class="list-group-item"><b>Date Joined: </b><?php if(isset($date_joined)) echo $date_joined; ?></li>
           </ul>
           <div class="card-body">
@@ -41,7 +42,7 @@ if(!isset($_SESSION['id'])) {
             <li class="nav-item">
               <a class="nav-link btn btn-info" href="profile_appointment.php">Appointments</a>
             </li>
-            
+
           </ul><br>
           <div class="card p-2">
             <h4>Profile</h4>
@@ -50,9 +51,16 @@ if(!isset($_SESSION['id'])) {
           <div class="card p-2">
             <h4>Link to Google Map</h4>
             <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Google Map</a> <br><br>
-
-            <h1><a href="https://calendar.google.com/calendar/r">Add To Calender</a></h1>
-
+          </div><br><br>
+					<div class="card p-2">
+            <h4>Social Media Handles</h4>
+						<ul>
+							<li><b>Facebook: @</b><?php if(isset($facebook)) echo $facebook; ?></li>
+							<li><b>Twitter: @</b><?php if(isset($twitter)) echo $twitter; ?></li>
+							<li><b>Instagram: @</b><?php if(isset($instagram)) echo $instagram; ?></li>
+							<li><b>Youtube: @</b><?php if(isset($youtube)) echo $youtube; ?></li>
+						</ul>
+             <br><br>
           </div>
       </div>
       </div>

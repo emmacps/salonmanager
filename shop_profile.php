@@ -30,7 +30,7 @@ include_once 'partials/parseAddappoints.php';
           <img class="img-fluid img-thumbnail" src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" alt="">
         </div>
         <br>
-       <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Visit Us On Google Map</a>
+       <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Locate Us On Google Map</a>
       </div>
 
       <div class="col-md-8">
@@ -93,7 +93,7 @@ include_once 'partials/parseAddappoints.php';
 								<?php
 									if( count($shopservices) > 0 ):
 										foreach( $shopservices as $service ):
-								?>											
+								?>
                 			<option value="<?php echo $service->id ?>"><?php echo $service->service_name." - ". $service->service_price ?></option>
 								<?php
 										endforeach;
@@ -117,7 +117,7 @@ include_once 'partials/parseAddappoints.php';
           <div class="form-group">
             <label>Enter Mobile Money Payment Transaction ID</label>
             <input type="text" name="transaction" class="form-control">
-          </div>       
+          </div>
           <div class="control-group form-group">
             <div class="controls">
               <label>Date:</label>

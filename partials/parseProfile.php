@@ -15,6 +15,7 @@ if(isset($_GET['u'])){
         $des = $rs['des'];
         $map = $rs['map'];
         $username = $rs['username'];
+        $contact = $rs['contact'];
         $profile_picture = $rs['avatar'];
         $date_joined =  strftime("%b %d, %Y", strtotime($rs["join_date"]));
 
@@ -41,6 +42,11 @@ else if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_PO
         $des = $rs['des'];
         $map = $rs['map'];
         $username = $rs['username'];
+        $contact = $rs['contact'];
+        $facebook = $rs['facebook'];
+        $twitter = $rs['twitter'];
+        $instagram = $rs['instagram'];
+        $youtube = $rs['youtube'];
         $email = $rs['email'];
         $profile_picture = $rs['avatar'];
         $date_joined =  strftime("%b %d, %Y", strtotime($rs["join_date"]));
@@ -57,7 +63,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
             $form_errors = array();
 
             //Form validation
-            $required_fields = array('email', 'username', 'shop_name', 'des');
+            $required_fields = array('email', 'username', 'shop_name', 'des', 'contact');
 
             //call the function to check empty field and merge the return data into form_error array
             $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
@@ -69,7 +75,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
             $form_errors = array_merge($form_errors, check_min_length($fields_to_check_length));
 
             //email validation / merge the return data into form_error array
-            $form_errors = array_merge($form_errors, check_email($_POST));
+          //  $form_errors = array_merge($form_errors, check_email($_POST));
 
             //validate if file has a valid extension
             isset($_FILES['avatar']['name']) ? $avatar = $_FILES['avatar']['name'] : $avatar = null;
@@ -84,6 +90,11 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
             $map = $_POST['map'];
             $email = $_POST['email'];
             $username = $_POST['username'];
+            $contact = $_POST['contact'];
+            $facebook = $_POST['facebook'];
+            $twitter = $_POST['twitter'];
+            $instagram = $_POST['instagram'];
+            $youtube = $_POST['youtube'];
             $hidden_id = $_POST['hidden_id'];
 
             $result = false;
@@ -104,7 +115,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
                         $oldAvatar = $rs['avatar'];
                     }
                     //create SQL update statement
-                    $sqlUpdate = "UPDATE users SET des =:des, shop_name =:shop_name, username =:username, map =:map, email =:email WHERE id =:id";
+                    $sqlUpdate = "UPDATE users SET des =:des, shop_name =:shop_name, username =:username, contact =:contact, facebook =:facebook, twitter =:twitter, instagram =:instagram, youtube =:youtube, map =:map, email =:email WHERE id =:id";
 
                     //use PDO prepared to sanitize data
                     $statement = $db->prepare($sqlUpdate);
@@ -129,7 +140,7 @@ else if(isset($_POST['updateProfileBtn'], $_POST['token'])){
 
                     }else{
                         //update the record in the database
-                        $statement->execute(array(':des' => $des, ':shop_name' => $shop_name, ':username' => $username, ':map' => $map, ':email' => $email, ':id' => $hidden_id));
+                        $statement->execute(array(':des' => $des, ':shop_name' => $shop_name, ':username' => $username, ':contact' => $contact, ':facebook' => $facebook, ':twitter' => $twitter, ':instagram' => $instagram, ':youtube' => $youtube,  ':map' => $map, ':email' => $email, ':id' => $hidden_id));
                     }
                     //check if one new row was created
                     if($statement->rowCount() == 1){
