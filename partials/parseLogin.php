@@ -6,12 +6,12 @@ if(isset($_POST['loginBtn'], $_POST['token'])){
     $config = require __DIR__ . '/../config/app.php';
     $secret = $config['recaptcha']['secret'];
 
-    $recaptcha = [
-        'secret' => $secret,
-       // 'response' => $_POST['g-recaptcha-response']
-    ];
+    // $recaptcha = [
+    //     'secret' => $secret,
+    //    // 'response' => $_POST['g-recaptcha-response']
+    // ];
 
-    $response = verifyReCaptcha($recaptcha);
+  //  $response = verifyReCaptcha($recaptcha);
 
     if(isset($response->success) && !$response->success == true){
         $result = "<script type='text/javascript'>

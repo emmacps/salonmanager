@@ -57,33 +57,6 @@ if(isset($_POST['signupBtn'], $_POST['token'])){
                 //check if one new row was created
                 if($statement->rowCount() == 1){
 
-                    //get the last inserted ID
-                  //  $user_id = $db->lastInsertId();
-                    //encode the ID
-                  //  $encode_id = base64_encode("encodeuserid{$user_id}");
-
-                    //prepare email body
-                    // $mail_body = '<html>
-                    // <body style="background-color:#CCCCCC; color:#000; font-family: Arial, Helvetica, sans-serif;
-                    //                     line-height:1.8em;">
-                    // <h2>User Authentication: Code A Secured Login System</h2>
-                    // <p>Dear '.$username.'<br><br>Thank you for registering, please click on the link below to
-                    //     confirm your email address</p>
-                    // <p><a href="http://localhost/auth/activate.php?id='.$encode_id.'"> Confirm Email</a></p>
-                    // <p><strong>&copy;2016 ICT DesighHUB</strong></p>
-                    // </body>
-                    // </html>';
-
-                    // $mail->addAddress($email, $username);
-                    // $mail->Subject = "Message from ICT DesignHUB";
-                    // $mail->Body = $mail_body;
-
-                    //Error Handling for PHPMailer
-                    // if(!$mail->Send()){
-                    //     $result = "<script type=\"text/javascript\">
-                    // swal(\"Error\",\" Email sending failed: $mail->ErrorInfo \",\"error\");</script>";
-                    // }
-                  //  else{
                         $result = "<script type=\"text/javascript\">
                             swal({
                             title: \"Congratulations $username!\",

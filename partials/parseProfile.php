@@ -16,6 +16,10 @@ if(isset($_GET['u'])){
         $map = $rs['map'];
         $username = $rs['username'];
         $contact = $rs['contact'];
+        $facebook = $rs['facebook'];
+        $twitter = $rs['twitter'];
+        $instagram = $rs['instagram'];
+        $youtube = $rs['youtube'];
         $profile_picture = $rs['avatar'];
         $date_joined =  strftime("%b %d, %Y", strtotime($rs["join_date"]));
 

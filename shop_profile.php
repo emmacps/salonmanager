@@ -30,12 +30,23 @@ include_once 'partials/parseAddappoints.php';
           <img class="img-fluid img-thumbnail" src="<?php if(isset($profile_picture)) echo $profile_picture; ?>" alt="">
         </div>
         <br>
-       <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Locate Us On Google Map</a>
+        <h3>Social Media Handles</h3>
+        <ul class="shop_profile_services">
+          <li><b>Facebook: @</b><?php if(isset($facebook)) echo $facebook; ?></li>
+              <li><b>Twitter: @</b><?php if(isset($twitter)) echo $twitter; ?></li>
+              <li><b>Instagram: @</b><?php if(isset($instagram)) echo $instagram; ?></li>
+              <li><b>Youtube: @</b><?php if(isset($youtube)) echo $youtube; ?></li>
+        </ul>
+        <a class="btn btn-success" href="<?php if(isset($map)) echo $map; ?>" target="_blank">Locate Us On Google Map</a>
+       <br>
       </div>
 
       <div class="col-md-8">
         <h3 class="my-3">Salon Description</h3>
         <p><?php if(isset($des)) echo $des; ?></p>
+        <h3>Contact Us</h3>
+        <p><?php if(isset($contact)) echo $contact; ?></p>
+       
         <h3 class="my-3">Services Provided</h3>
         <ul class="shop_profile_services">
 					<?php

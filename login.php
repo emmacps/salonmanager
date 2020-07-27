@@ -7,7 +7,7 @@ include_once 'partials/parseLogin.php';
 <div class="container">
   <div class="row">
     <div class="col-sm-8 col-md-8 bottompadding">
-        <h2>Login Form </h2><hr>
+        <h2>Salon Login Form </h2><hr>
         <div>
         <?php if(isset($result)) echo $result; ?>
         <?php if(!empty($form_errors)) echo show_errors($form_errors); ?>
@@ -35,7 +35,7 @@ include_once 'partials/parseLogin.php';
             </form>
     </div>
     <div class="col-sm-4 col-md-4">
-      <p>hello</p>
+      <!-- <p>hello</p> -->
     </div>
   </div>
 </div>
