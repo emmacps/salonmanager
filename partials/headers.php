@@ -26,7 +26,7 @@ error_reporting(E_ALL);
  <!-- <script>tinymce.init({selector:'textarea'});</script> -->
 
     <script type="text/javascript" src="js/sweetalert.min.js"></script>
-
+    <script src="https://cdn.ckeditor.com/ckeditor5/20.0.0/classic/ckeditor.js"></script>
 
 </head>
 <body>

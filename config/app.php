@@ -13,8 +13,8 @@ return [
         'encrption' => 'tls',
         'port' => 587,
         'host' => 'smtp.gmail.com',
-        'username' => 'your email here',
-        'password' => 'your password',
+        'username' => '',
+        'password' => '',
         'from' => 'no-reply@salonmanager.com',
         'sender_name' => 'Salon Manager'
     ],

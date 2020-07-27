@@ -14,7 +14,7 @@ if(isset($_POST['bookappointBtn'], $_POST['token'])){
 		$form_errors = array();
 
 		// form validation
-		$required_fields = array('shop_id', 'fname', 'number', 'email', 'select_service', 'service_mode', 'date');
+		$required_fields = array('shop_id', 'fname', 'number', 'email', 'select_service', 'service_mode', 'transaction', 'date');
 		 //check empty Fields
     $form_errors = array_merge($form_errors, check_empty_fields($required_fields));
 
